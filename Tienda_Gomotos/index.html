@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Formularios</title>
+</head>
+<body bgcolor="orange">
+    <center>
+    <h1>Menú de Formularios</h1>
+    
+    <label for="formularios">Selecciona un formulario:</label>
+    <select id="formularios" onchange="irAFormulario()">
+        <option value="">Seleccionar...</option>
+        <option value="Vista/FormularioMarca.php">Formulario de Marca</option>
+        <option value="Vista/FormularioRepuesto.php">Formulario de Repuesto</option>
+        <option value="Vista/FormularioProveedor.php">Formulario de Proveedor</option>
+        <option value="Vista/FormularioCliente.php">Formulario de Cliente</option>
+        <option value="Vista/FormularioCarritoV.php">Formulario Agregar A Carrito Ventas </option>
+        <option value="Vista/FormularioCarritoC.php">Formulario Agregar A Carrito Compras </option>
+    </select>
+
+    <script>
+        function irAFormulario() {
+            var formulario = document.getElementById("formularios").value;
+            if (formulario !== "") {
+                window.location.href = formulario;
+            }
+        }
+    </script>
+</center>
+</body>
+</html>
