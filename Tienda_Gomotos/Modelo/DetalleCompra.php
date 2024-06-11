@@ -28,4 +28,6 @@
             $insertar = mysqli_query($this->_conexion,$sql);
             return $insertar;
         }
+      
+            
     }

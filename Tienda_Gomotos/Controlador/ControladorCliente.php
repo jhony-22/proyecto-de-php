@@ -11,8 +11,9 @@
     $documento = $_POST['documento'];
     $telefono = $_POST['telefono'];
     $correo = $_POST['correo'];
+    $clave = $_POST['clave'];
 
-    $obgetoCliente = new  Cliente($conexion,$idcliente,$nombre,$documento,$telefono,$correo);
+    $obgetoCliente = new  Cliente($conexion,$idcliente,$nombre,$documento,$telefono,$correo,$clave);
     echo 'entra al insertar';
     
     switch($opcion){

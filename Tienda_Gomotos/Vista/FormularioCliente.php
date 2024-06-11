@@ -18,6 +18,7 @@
                 <th scope="col">Documento </th>
                 <th scope="col">Correo</th>
                 <th scope="col">Telefono</th>
+                <th></th>
                 <th scope="col"></th>
             </tr>
     <?php
@@ -26,7 +27,7 @@
         $conexion = $obgetoConexion->conectar();
 
         include_once("../Modelo/Cliente.php");
-        $obgetoCliente = new Cliente($conexion,0,'','','','');
+        $obgetoCliente = new Cliente($conexion,0,'','','','','');
         $listaCliente = $obgetoCliente->listar(0);
         while($unregistro = mysqli_fetch_array($listaCliente)){
             echo '<tr><form id="fmodificarCliente'.$unregistro["idcliente"].'" action="../Controlador/ControladorCliente.php"
@@ -36,7 +37,8 @@
             echo '<td><input type="number" name="documento" value="'.$unregistro['documento'].'"></td>';
             echo '<td><input type="email"  name="correo"   value="'.$unregistro['correo'].'"></td>';
             echo '<td><input type="number"  name="telefono"   value="'.$unregistro['telefono'].'"></td>';
-            
+            echo '<td><input type="password"  name="clave"   value="'.$unregistro['clave'].'"></td>';
+
             echo '<td><button type="submit" name="enviar"  value="Modificar">Modificar</button>
                       <button type="submit" name="enviar"  value="Eliminar">Eliminar</button></td>';
             echo '</form></tr>';
@@ -50,6 +52,7 @@
                 <td><input type="number" name="documento"></td>
                 <td><input type="email" name="correo"></td>
                 <td><input type="number" name="telefono"></td>
+                <td><input type="password" name="clave"></td>
                 <td><button type="submit" name="enviar" value="Insertar">Insertar</button>
                     <button type="submit" name="enviar" value="Limpiar">Limpiar</button></td>
             </form></tr>

@@ -6,15 +6,17 @@
         private $_documento;
         private $_telefono;
         private $_correo;
+        private $_hashedClave;
         private $_paginacion = 10;
 
-        function __construct($conexion,$idcliente,$nombre,$documento,$telefono,$correo){
+        function __construct($conexion,$idcliente,$nombre,$documento,$telefono,$correo,$clave){
             $this->_conexion = $conexion;
             $this->_idcliente = $idcliente;
             $this->_nombre = $nombre;
             $this->_documento = $documento;
             $this->_telefono = $telefono;
             $this->_correo = $correo;
+            $this->_hashedClave = hash('md2', $clave);
         }
         function _get($k){
             return $this->$k;
@@ -23,15 +25,16 @@
             $this->$k = $v;
         }
         function insertar(){
-            $sql = "insert into cliente (idcliente,nombre,documento,telefono,correo)
-            values (null, '$this->_nombre','$this->_documento','$this->_telefono','$this->_correo')";
+            $sql = "insert into cliente (idcliente,nombre,documento,telefono,correo,clave)
+            values (null, '$this->_nombre','$this->_documento','$this->_telefono','$this->_correo', '$this->_hashedClave')";
             $insertar = mysqli_query($this->_conexion,$sql);
             return $insertar;
         }
         function modificar(){
             $sql = "update cliente set nombre='$this->_nombre',
             documento='$this->_documento', telefono='$this->_telefono',
-            correo='$this->_correo' where idcliente=$this->_idcliente";
+            correo='$this->_correo', clave='$this->_hashedClave'
+            where idcliente=$this->_idcliente";
             $modificar = mysqli_query($this->_conexion,$sql);
             return $modificar;
         }

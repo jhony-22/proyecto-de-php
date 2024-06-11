@@ -86,6 +86,7 @@
                     <th>Cantidad</th>
                     <th>Id Proveedor</th>
                     <th>Id Repuesto</th>
+                    
                     <th></th>
                 </tr>
         <?php
@@ -95,15 +96,15 @@
 
             include_once("../Modelo/CarritoCompras.php");
             $obgetocarritoC = new CarritoCompras($conexion,'','','');
-            $listaCarritoC = $obgetocarritoC->listarcarrito();
+            $listaCarritoC = $obgetocarritoC->listarcarrito(0);
             while($unregistro = mysqli_fetch_array($listaCarritoC)){
-                echo '<tr><form id="ingresarCarrito'.$unregistro[0].'" action="../Controlador/ControladorCarritoC.php"
+                echo '<tr><form id="ingresarCarrito'.$unregistro["cantidad"].'" action="../Controlador/ControladorCarritoC.php"
                 method="post"">';
-                echo '<td><input type="number" name="cantidad"   value="'.$unregistro[0].'"></td>';
-                echo '<td><input type="number"   name="proveedor"  value="'.$unregistro[1].'"></td>';
-                echo '<td><input type="number" name="idrepuesto" value="'.$unregistro[2].'"></td>';
+                echo '<td><input type="number" name="cantidad"   value="'.$unregistro['cantidad'].'"></td>';
+                echo '<td><input type="number"   name="proveedor"  value="'.$unregistro['idproveedor'].'"></td>';
+                echo '<td><input type="number" name="idrepuesto" value="'.$unregistro['idRepuestos'].'"></td>';
 
-                echo '<td><button type="submit" name="Agregar"  value="Eliminar">Eliminar</button></td>';
+                echo '<td><button type="submit" name="Agregar"  value="eliminar">Eliminar</button></td>';
 
                 echo '</form></tr>';
             }
@@ -115,7 +116,7 @@
         <br>
         <tr><form id="nuevacompra" action="../Controlador/ControladorCarritoC.php" method="post">
                 <td><button type="submit" name="Agregar" value="Comprar">Nueva Compra</button></td>
-       
+         
                 </form></tr>
     </center>
     

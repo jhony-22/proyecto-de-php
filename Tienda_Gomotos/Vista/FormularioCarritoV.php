@@ -6,7 +6,7 @@
     <title>Carrito Ventas</title>
     <script>
         function redirigir() {
-            window.location.href = "FormularioCarrito.php";
+            window.location.href = "Formulario.php";
         }
     </script>
 </head>
@@ -40,7 +40,7 @@
 
             include_once("../Modelo/Cliente.php");
 
-            $obgetoCliente = new Cliente($conexion,0,'','','','');
+            $obgetoCliente = new Cliente($conexion,0,'','','','','');
             $listaCliente = $obgetoCliente->listar(0);
 
             $obgetoMarca = new Marca($conexion,0,'','');

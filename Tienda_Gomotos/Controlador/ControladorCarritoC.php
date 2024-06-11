@@ -14,17 +14,18 @@
     
     echo $opcion ;
     
+    
     switch($opcion){
 
         case 'Insertar':
             $obgetocarritoC->insertar();
             $mensaje1 = "insertado";
             break;
-        
-        case 'Eliminar':
-            $obgetocarritoC->eliminar();
+        case 'eliminar':
+            $obgetocarritoC->eliminardecarrito();
+            
             $mensaje1 = "eliminado";
-            break;
+            break;        
         
         case 'Comprar':
             $obgetocarritoC->comprar(1);

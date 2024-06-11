@@ -29,4 +29,9 @@
             $ultimo_id = mysqli_insert_id($this->_conexion);
             return $ultimo_id;
         }
+        function actualizar($idfC,$total){
+            $sql = "update factura_compra set totalPagar=$total where idfacturaCompra=$idfC";
+            $actualizar = mysqli_query($this->_conexion,$sql);
+            return $actualizar;
+        }
     }
